@@ -1,7 +1,7 @@
 import math
 import random
-bag = ['w', 'b', 'a', 'c', 'd', 'e']
 
+# In these cases the 'w' is the marble we are trying to remove
 def noReplacing():
     pool = ['w', 'b', 'a', 'c', 'd', 'e']
     counter = 0
@@ -26,23 +26,24 @@ def replacing():
             found = True
     return counter
 
+# test() handles both replacement and without replacement cases and can take a number of iterations as a parameter
 def test(replace, trials):
     results = []
-
     if(replace):
         for i in range(trials):
             results.append(replacing())
-        print(average(results))
+        print("With replacement average: " + str(average(results)) + " draws")
 
     else:    
         for i in range(trials):
             results.append(noReplacing())
-        print(average(results))
+        print("Without replacement average: " + str(average(results)) + " draws")
 
-
-
+# Function that returns the average of a set of integers and returns a float
 def average(numbers):
     return sum(numbers)/len(numbers)
 
-test(True, 1000000)
+print("Running With Replacement with 1000000 iterations")
+test(True, 1000000) 
+print("Running Without Replacement with 1000000 iterations")
 test(False, 1000000)
